@@ -4,7 +4,7 @@ btn.addEventListener('click', function(){
     getPerson(getData)
 });
 
-function getPerson(){
+function getPerson(cb){
     const url ='https://randomuser.me/api/';
     const ajax = new XMLHttpRequest();
 
@@ -13,11 +13,12 @@ function getPerson(){
 
  ajax.onload = function(){
      if(this.status === 200){
-        info.textContent = this.responseText;
+         cb(this.responseText,showData);
+       
      }
      else{
-       // this.onerror()
-       console.log(this.statusText);
+       this.onerror()
+     
      }
  }
 
@@ -30,6 +31,12 @@ function getPerson(){
 }
 
 
-function getData(){
+function getData(response,cb){
+    const data = JSON.parse(response);
     console.log("I am the data function");
+    cb(data)
+}
+
+function showData(){
+     console.log("show data");
 }
