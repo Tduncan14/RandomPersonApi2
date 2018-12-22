@@ -5,7 +5,19 @@ btn.addEventListener('click', function(){
 });
 
 function getPerson(){
+    const url ='https://randomuser.me/api/';
+    const ajax = new XMLHttpRequest();
+
+    ajax.open('GET',url,true);
     console.log("I am function");
+
+
+    ajax.onerror = function(){
+        console.log('There was an error');
+
+    }
+
+    ajax.send();
 }
 
 
