@@ -11,6 +11,15 @@ function getPerson(){
     ajax.open('GET',url,true);
     console.log("I am function");
 
+ ajax.onload = function(){
+     if(this.status === 200){
+        info.textContent = this.responseText;
+     }
+     else{
+       // this.onerror()
+       console.log(this.statusText);
+     }
+ }
 
     ajax.onerror = function(){
         console.log('There was an error');
